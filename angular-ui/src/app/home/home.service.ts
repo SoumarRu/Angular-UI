@@ -7,11 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private REST_API_SERVER = "http://localhost:3000";
+  private REST_API_SERVER_PERSON = "https://localhost:7213/Person";
+  private REST_API_SERVER_SEASON = "https://localhost:7213/Season";
 
   constructor(private httpClient: HttpClient) { }
 
-  public getInformation() {
-    this.httpClient.get(this.REST_API_SERVER);
+  public getInformation(): Observable<any> {
+    return this.httpClient.get(this.REST_API_SERVER_PERSON);
+  }
+
+  public getSeasons(): Observable<any> {
+    return this.httpClient.get(this.REST_API_SERVER_SEASON);
   }
 }

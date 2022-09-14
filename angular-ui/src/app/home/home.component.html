@@ -1,8 +1,14 @@
 <p>home works!</p>
 
-{{title}}
+<ul>
+    <li *ngFor="let person of people">
+        {{person.id}}
+        {{person.name}}
+        {{person.age}}
+        {{getSeasonById(person.seasonId)}}
+    </li>
+</ul>
 
-Snaps: {{snaps}}
-<button (click)="onAddSnap()">
-    Add snaps
-</button>
+<ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef" [rowData]="rowData$ | async" [rowSelection]="'multiple'" [animateRows]="true"
+    (gridReady)="onGridReady($event)" (cellClicked)="onCellClicked($event)"></ag-grid-angular>
